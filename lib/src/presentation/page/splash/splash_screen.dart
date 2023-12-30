@@ -1,8 +1,8 @@
-import 'package:clean_architecture/src/comman/routes.dart';
 import 'package:clean_architecture/src/presentation/bloc/authenticator_watcher/authenticator_watcher_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:clean_architecture/src/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -30,21 +30,19 @@ class _SplashScreenState extends State<SplashScreen> {
       listener: (context, state) {
         state.maybeMap(
           orElse: () {
-            Navigator.pushNamedAndRemoveUntil(
-                context, SIGN_IN, (route) => false);
+            context.goNamed(AppRoutes.SIGNUP_ROUTE_NAME);
           },
           authenticating: (_) {},
           authenticated: (_) {
-            Navigator.pushNamedAndRemoveUntil(context, HOME, (route) => false);
+            // context.goNamed(AppRoutes.HOME_ROUTE_NAME);
           },
           isFirstTime: (_) {
-            Navigator.pushNamedAndRemoveUntil(
-                context, ONBOARDING_SCREEN, (route) => false);
+            // context.goNamed(AppRoutes.ONBOARDING_ROUTE_NAME);
           },
         );
       },
       child: Scaffold(
-        body: Container(
+        body: SizedBox(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
           // color: Colors.black,
