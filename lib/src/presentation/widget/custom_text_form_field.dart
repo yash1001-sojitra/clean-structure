@@ -9,7 +9,7 @@ enum TextFieldType { alphabet, email, text, password, phoneNumber, number }
 
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
-    Key? key,
+    super.key,
     this.controller,
     this.textFieldType = TextFieldType.text,
     this.hintText,
@@ -29,7 +29,7 @@ class CustomTextFormField extends StatelessWidget {
     this.textInputType,
     this.minLength = 1,
     this.minline = 1,
-  }) : super(key: key);
+  });
 
   final TextEditingController? controller;
   final TextFieldType textFieldType;
@@ -169,7 +169,7 @@ class CustomTextFormField extends StatelessWidget {
         style: theme.textTheme.bodyLarge,
         inputFormatters: inputFormatters ?? [],
         keyboardType: textInputType ?? keyboardType(textFieldType),
-        validator: validator(textFieldType),
+        validator: validator(textFieldType).call,
         textInputAction: textInputAction,
         minLines: minline,
         decoration: InputDecoration(

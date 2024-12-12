@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 
 class CustomTextButton extends StatelessWidget {
   const CustomTextButton({
-    Key? key,
+    super.key,
     required this.label,
     required this.onTap,
     this.textColor,
     this.fontSize = 14.0,
     this.enableUnderline = false,
-  }) : super(key: key);
+  });
 
   final String label;
   final VoidCallback? onTap;

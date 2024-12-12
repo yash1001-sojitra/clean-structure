@@ -2,6 +2,7 @@
 
 import 'package:clean_architecture/app/comman/constant.dart';
 import 'package:clean_architecture/src/exports/bloc_list.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -17,6 +18,9 @@ import 'package:clean_architecture/routes/go_routes.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SharedPrefHelper().init();
+
+  Firebase.initializeApp();
+
   runApp(const MyApp());
 }
 

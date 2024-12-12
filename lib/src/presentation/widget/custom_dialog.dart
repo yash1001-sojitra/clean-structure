@@ -1,4 +1,8 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 // ignore_for_file: deprecated_member_use
+
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:clean_architecture/app/comman/colors.dart';
 import 'package:clean_architecture/app/comman/constant.dart';
@@ -6,8 +10,6 @@ import 'package:clean_architecture/app/comman/screens.dart';
 import 'package:clean_architecture/src/presentation/cubit/theme/theme_cubit.dart';
 import 'package:clean_architecture/src/presentation/widget/custom_elevated_button.dart';
 import 'package:clean_architecture/src/presentation/widget/custom_outlined_button.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 Future<dynamic> showBottomDialog(
   BuildContext context, {
@@ -179,11 +181,10 @@ Future<dynamic> showConfirmationDialog(
 
 class _BuildButtonIcon extends StatelessWidget {
   const _BuildButtonIcon({
-    Key? key,
     required this.onTap,
     required this.icon,
     required this.label,
-  }) : super(key: key);
+  });
 
   final VoidCallback onTap;
   final IconData icon;

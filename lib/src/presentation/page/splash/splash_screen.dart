@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
@@ -17,9 +16,13 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     Future.delayed(const Duration(seconds: 1, microseconds: 900), () {
       Future.microtask(
-        () => context.read<AuthenticatorWatcherBloc>().add(
-              const AuthenticatorWatcherEvent.authCheckRequest(),
-            ),
+        () {
+          if (mounted) {
+            context.read<AuthenticatorWatcherBloc>().add(
+                  const AuthenticatorWatcherEvent.authCheckRequest(),
+                );
+          }
+        },
       );
     });
     super.initState();

@@ -6,14 +6,14 @@ import 'package:flutter/material.dart';
 
 class CustomOutlinedButton extends StatelessWidget {
   const CustomOutlinedButton({
-    Key? key,
+    super.key,
     required this.onTap,
     required this.label,
     this.width = double.infinity,
     this.height = 45.0,
     this.color = ColorLight.primary,
     this.labelColor = Colors.white,
-  }) : super(key: key);
+  });
 
   final void Function()? onTap;
   final String? label;
