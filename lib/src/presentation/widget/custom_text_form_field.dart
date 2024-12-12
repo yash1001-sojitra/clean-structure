@@ -1,6 +1,6 @@
 // ignore_for_file: deprecated_member_use
 
-import 'package:clean_architecture/src/comman/constant.dart';
+import 'package:clean_architecture/app/comman/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:form_field_validator/form_field_validator.dart';
@@ -166,7 +166,7 @@ class CustomTextFormField extends StatelessWidget {
         onChanged: onChanged,
         textAlign: textAlign ?? TextAlign.left,
         obscureText: obscureText ?? false,
-        style: theme.textTheme.bodyText1,
+        style: theme.textTheme.bodyLarge,
         inputFormatters: inputFormatters ?? [],
         keyboardType: textInputType ?? keyboardType(textFieldType),
         validator: validator(textFieldType),
@@ -174,14 +174,14 @@ class CustomTextFormField extends StatelessWidget {
         minLines: minline,
         decoration: InputDecoration(
           hintText: hintText,
-          hintStyle: theme.textTheme.subtitle2,
+          hintStyle: theme.textTheme.titleSmall,
           labelText: labelText,
-          labelStyle: theme.textTheme.subtitle1,
+          labelStyle: theme.textTheme.titleMedium,
           suffixIcon: suffixIcon,
           prefixIcon: prefixIcon,
           helperMaxLines: helperMaxLines,
           helperText: helperText,
-          helperStyle: theme.textTheme.subtitle2?.copyWith(fontSize: 10),
+          helperStyle: theme.textTheme.titleSmall?.copyWith(fontSize: 10),
           contentPadding: const EdgeInsets.symmetric(horizontal: SPACE12),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(RADIUS),
@@ -193,11 +193,11 @@ class CustomTextFormField extends StatelessWidget {
           ),
           errorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(RADIUS),
-            borderSide: BorderSide(color: theme.errorColor),
+            borderSide: BorderSide(color: theme.colorScheme.error),
           ),
           focusedErrorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(RADIUS),
-            borderSide: BorderSide(color: theme.errorColor),
+            borderSide: BorderSide(color: theme.colorScheme.error),
           ),
           disabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(RADIUS),

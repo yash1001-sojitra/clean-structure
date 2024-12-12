@@ -1,23 +1,22 @@
 // ignore_for_file: depend_on_referenced_packages
 
-import 'package:clean_architecture/src/Exports/bloc_list.dart';
+import 'package:clean_architecture/app/comman/constant.dart';
+import 'package:clean_architecture/src/exports/bloc_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-import 'package:clean_architecture/injection.dart' as di;
 import 'package:clean_architecture/l10n/l10n.dart';
 import 'package:clean_architecture/src/Utilities/shared_pref_helper.dart';
-import 'package:clean_architecture/src/comman/themes.dart';
+import 'package:clean_architecture/app/comman/themes.dart';
 import 'package:clean_architecture/src/presentation/bloc/language/language_form/language_form_bloc.dart';
 import 'package:clean_architecture/src/presentation/cubit/theme/theme_cubit.dart';
-import 'package:clean_architecture/src/routes/go_routes.dart';
+import 'package:clean_architecture/routes/go_routes.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SharedPrefHelper().init();
-  di.init();
   runApp(const MyApp());
 }
 
@@ -33,7 +32,7 @@ class MyApp extends StatelessWidget {
             builder: (context, themeCubit) {
               return MaterialApp.router(
                 debugShowCheckedModeBanner: false,
-                title: 'Urja Mobility',
+                title: APP_NAME,
                 theme: themeLight(context),
                 darkTheme: themeDark(context),
                 locale: state.selectedLocale,

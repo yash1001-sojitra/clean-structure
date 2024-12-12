@@ -3,7 +3,7 @@ import 'package:clean_architecture/src/presentation/page/Error/error_screen.dart
 import 'package:clean_architecture/src/presentation/page/auth/sign_in_screen.dart';
 import 'package:clean_architecture/src/presentation/page/auth/sign_up_screen.dart';
 import 'package:clean_architecture/src/presentation/page/splash/splash_screen.dart';
-import 'package:clean_architecture/src/routes/routes.dart';
+import 'package:clean_architecture/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 

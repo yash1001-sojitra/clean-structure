@@ -12,7 +12,7 @@ part of 'authenticator_watcher_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$AuthenticatorWatcherEvent {
@@ -73,6 +73,9 @@ class _$AuthenticatorWatcherEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of AuthenticatorWatcherEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -90,6 +93,9 @@ class __$$AuthCheckRequestImplCopyWithImpl<$Res>
   __$$AuthCheckRequestImplCopyWithImpl(_$AuthCheckRequestImpl _value,
       $Res Function(_$AuthCheckRequestImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AuthenticatorWatcherEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -192,6 +198,9 @@ class __$$SignOutImplCopyWithImpl<$Res>
   __$$SignOutImplCopyWithImpl(
       _$SignOutImpl _value, $Res Function(_$SignOutImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AuthenticatorWatcherEvent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -357,6 +366,9 @@ class _$AuthenticatorWatcherStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of AuthenticatorWatcherState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -373,6 +385,9 @@ class __$$InitialImplCopyWithImpl<$Res>
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AuthenticatorWatcherState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -493,6 +508,9 @@ class __$$AuthenticatingImplCopyWithImpl<$Res>
   __$$AuthenticatingImplCopyWithImpl(
       _$AuthenticatingImpl _value, $Res Function(_$AuthenticatingImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AuthenticatorWatcherState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -613,6 +631,9 @@ class __$$AuthenticatedImplCopyWithImpl<$Res>
   __$$AuthenticatedImplCopyWithImpl(
       _$AuthenticatedImpl _value, $Res Function(_$AuthenticatedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AuthenticatorWatcherState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -733,6 +754,9 @@ class __$$UnauthenticatedImplCopyWithImpl<$Res>
   __$$UnauthenticatedImplCopyWithImpl(
       _$UnauthenticatedImpl _value, $Res Function(_$UnauthenticatedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AuthenticatorWatcherState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -853,6 +877,9 @@ class __$$IsFirstTimeImplCopyWithImpl<$Res>
   __$$IsFirstTimeImplCopyWithImpl(
       _$IsFirstTimeImpl _value, $Res Function(_$IsFirstTimeImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AuthenticatorWatcherState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

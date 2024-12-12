@@ -1,11 +1,14 @@
 import 'dart:io';
-import 'package:clean_architecture/src/comman/exception.dart';
-import 'package:clean_architecture/src/comman/failure.dart';
+import 'package:clean_architecture/app/comman/exception.dart';
+import 'package:clean_architecture/app/comman/failure.dart';
 import 'package:clean_architecture/src/data/datasource/authentication_remote_data_source.dart';
 import 'package:clean_architecture/src/domain/repositories/autentication_repository.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
 
+
+@LazySingleton(as: AuthenticationRepository)
 class AuthenticationRepositoryImpl extends AuthenticationRepository {
   AuthenticationRepositoryImpl(this.dataSource);
   final AuthenticationRemoteDataSource dataSource;

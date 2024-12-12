@@ -1,8 +1,8 @@
 // ignore_for_file: deprecated_member_use
 
-import 'package:clean_architecture/src/comman/colors.dart';
-import 'package:clean_architecture/src/comman/constant.dart';
-import 'package:clean_architecture/src/comman/screens.dart';
+import 'package:clean_architecture/app/comman/colors.dart';
+import 'package:clean_architecture/app/comman/constant.dart';
+import 'package:clean_architecture/app/comman/screens.dart';
 import 'package:clean_architecture/src/presentation/cubit/theme/theme_cubit.dart';
 import 'package:clean_architecture/src/presentation/widget/custom_elevated_button.dart';
 import 'package:clean_architecture/src/presentation/widget/custom_outlined_button.dart';
@@ -137,7 +137,7 @@ Future<dynamic> showConfirmationDialog(
                 children: [
                   Text(
                     title,
-                    style: theme.textTheme.bodyText1,
+                    style: theme.textTheme.bodyLarge,
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: 25),
@@ -208,7 +208,7 @@ class _BuildButtonIcon extends StatelessWidget {
           const SizedBox(height: SPACE8),
           Text(
             label,
-            style: theme.textTheme.subtitle1,
+            style: theme.textTheme.titleMedium,
           ),
         ],
       ),

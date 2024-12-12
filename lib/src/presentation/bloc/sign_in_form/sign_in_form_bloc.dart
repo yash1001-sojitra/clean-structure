@@ -1,12 +1,15 @@
-import 'package:clean_architecture/src/comman/enum.dart';
+import 'package:clean_architecture/app/comman/enum.dart';
 import 'package:clean_architecture/src/domain/usecase/login.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 
 part 'sign_in_form_event.dart';
 part 'sign_in_form_state.dart';
 part 'sign_in_form_bloc.freezed.dart';
 
+
+@singleton
 class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
   SignInFormBloc(this._signInWithEmail) : super(SignInFormState.initial()) {
     on<SignInFormEvent>((event, emit) async {

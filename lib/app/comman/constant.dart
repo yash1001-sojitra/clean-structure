@@ -1,5 +1,8 @@
 // ignore_for_file: constant_identifier_names
 
+
+const String APP_NAME = 'Clean Architecture';
+
 const String ACCESS_TOKEN = 'access_token';
 const String ONBOARDING = 'onboarding';
 

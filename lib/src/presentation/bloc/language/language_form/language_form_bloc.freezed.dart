@@ -12,7 +12,7 @@ part of 'language_form_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$LanguageFormEvent {
@@ -50,7 +50,9 @@ mixin _$LanguageFormEvent {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LanguageFormEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $LanguageFormEventCopyWith<LanguageFormEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -74,6 +76,8 @@ class _$LanguageFormEventCopyWithImpl<$Res, $Val extends LanguageFormEvent>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of LanguageFormEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -107,6 +111,8 @@ class __$$SelectLanguageImplCopyWithImpl<$Res>
       _$SelectLanguageImpl _value, $Res Function(_$SelectLanguageImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of LanguageFormEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -145,7 +151,9 @@ class _$SelectLanguageImpl implements _SelectLanguage {
   @override
   int get hashCode => Object.hash(runtimeType, locale);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LanguageFormEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SelectLanguageImplCopyWith<_$SelectLanguageImpl> get copyWith =>
@@ -214,8 +222,11 @@ abstract class _SelectLanguage implements LanguageFormEvent {
 
   @override
   Locale get locale;
+
+  /// Create a copy of LanguageFormEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SelectLanguageImplCopyWith<_$SelectLanguageImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -226,7 +237,9 @@ mixin _$LanguageFormState {
   Locale get selectedLocale => throw _privateConstructorUsedError;
   List<Locale> get supportedLocales => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LanguageFormState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $LanguageFormStateCopyWith<LanguageFormState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -253,6 +266,8 @@ class _$LanguageFormStateCopyWithImpl<$Res, $Val extends LanguageFormState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of LanguageFormState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -299,6 +314,8 @@ class __$$LanguageFormStateImplCopyWithImpl<$Res>
       $Res Function(_$LanguageFormStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of LanguageFormState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -366,7 +383,9 @@ class _$LanguageFormStateImpl implements _LanguageFormState {
   int get hashCode => Object.hash(runtimeType, state, selectedLocale,
       const DeepCollectionEquality().hash(_supportedLocales));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LanguageFormState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$LanguageFormStateImplCopyWith<_$LanguageFormStateImpl> get copyWith =>
@@ -386,8 +405,11 @@ abstract class _LanguageFormState implements LanguageFormState {
   Locale get selectedLocale;
   @override
   List<Locale> get supportedLocales;
+
+  /// Create a copy of LanguageFormState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LanguageFormStateImplCopyWith<_$LanguageFormStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

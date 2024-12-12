@@ -1,12 +1,15 @@
-import 'package:clean_architecture/src/comman/api.dart';
-import 'package:clean_architecture/src/comman/constant.dart';
+import 'package:clean_architecture/app/comman/api.dart';
+import 'package:clean_architecture/app/comman/constant.dart';
 import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class AuthenticationRemoteDataSource {
   Future<void> login(String email, String password);
 }
 
+
+@LazySingleton(as: AuthenticationRemoteDataSource)
 class AuthenticationRemoteDataSourceImpl
     implements AuthenticationRemoteDataSource {
   final Dio dio = Dio();

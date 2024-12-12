@@ -1,4 +1,4 @@
-import 'package:clean_architecture/src/comman/failure.dart';
+import 'package:clean_architecture/app/comman/failure.dart';
 import 'package:dartz/dartz.dart';
 
 abstract class AuthenticationRepository {

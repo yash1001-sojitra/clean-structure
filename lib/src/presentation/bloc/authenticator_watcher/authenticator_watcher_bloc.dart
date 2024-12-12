@@ -1,11 +1,13 @@
-import 'package:clean_architecture/src/comman/constant.dart';
+import 'package:clean_architecture/app/comman/constant.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 part 'authenticator_watcher_event.dart';
 part 'authenticator_watcher_state.dart';
 part 'authenticator_watcher_bloc.freezed.dart';
 
+@singleton
 class AuthenticatorWatcherBloc
     extends Bloc<AuthenticatorWatcherEvent, AuthenticatorWatcherState> {
   AuthenticatorWatcherBloc()

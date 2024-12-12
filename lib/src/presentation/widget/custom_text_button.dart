@@ -11,7 +11,7 @@ class CustomTextButton extends StatelessWidget {
     this.fontSize = 14.0,
     this.enableUnderline = false,
   }) : super(key: key);
-  
+
   final String label;
   final VoidCallback? onTap;
   final Color? textColor;
@@ -26,7 +26,7 @@ class CustomTextButton extends StatelessWidget {
       onPressed: onTap,
       child: Text(
         label,
-        style: theme.textTheme.headline3?.copyWith(
+        style: theme.textTheme.displaySmall?.copyWith(
           color: (textColor == null) ? null : textColor,
           fontSize: fontSize,
           decoration: (enableUnderline == true)

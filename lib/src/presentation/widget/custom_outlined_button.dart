@@ -1,7 +1,7 @@
 // ignore_for_file: deprecated_member_use
 
-import 'package:clean_architecture/src/comman/colors.dart';
-import 'package:clean_architecture/src/comman/constant.dart';
+import 'package:clean_architecture/app/comman/colors.dart';
+import 'package:clean_architecture/app/comman/constant.dart';
 import 'package:flutter/material.dart';
 
 class CustomOutlinedButton extends StatelessWidget {
@@ -41,7 +41,7 @@ class CustomOutlinedButton extends StatelessWidget {
         ),
         child: Text(
           label!,
-          style: theme.textTheme.bodyText1,
+          style: theme.textTheme.bodyLarge,
         ),
       ),
     );
