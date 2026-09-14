@@ -1,4 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// dart format width=80
 
 // **************************************************************************
 // InjectableConfigGenerator
@@ -8,6 +9,7 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+
 import 'package:clean_architecture/src/data/datasource/authentication_remote_data_source.dart'
     as _i198;
 import 'package:clean_architecture/src/data/repository/authentication_repository_impl.dart'
@@ -41,12 +43,12 @@ extension GetItInjectableX on _i174.GetIt {
       environment,
       environmentFilter,
     );
-    gh.singleton<_i627.UpdateTokenCubit>(() => _i627.UpdateTokenCubit());
-    gh.singleton<_i291.ThemeCubit>(() => _i291.ThemeCubit());
-    gh.singleton<_i297.NetworkBloc>(() => _i297.NetworkBloc());
-    gh.singleton<_i505.LanguageFormBloc>(() => _i505.LanguageFormBloc());
     gh.singleton<_i793.AuthenticatorWatcherBloc>(
         () => _i793.AuthenticatorWatcherBloc());
+    gh.singleton<_i505.LanguageFormBloc>(() => _i505.LanguageFormBloc());
+    gh.singleton<_i297.NetworkBloc>(() => _i297.NetworkBloc());
+    gh.singleton<_i291.ThemeCubit>(() => _i291.ThemeCubit());
+    gh.singleton<_i627.UpdateTokenCubit>(() => _i627.UpdateTokenCubit());
     gh.lazySingleton<_i198.AuthenticationRemoteDataSource>(
         () => _i198.AuthenticationRemoteDataSourceImpl());
     gh.lazySingleton<_i914.AuthenticationRepository>(() =>

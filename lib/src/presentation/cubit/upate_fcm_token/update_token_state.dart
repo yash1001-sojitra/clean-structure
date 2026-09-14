@@ -1,7 +1,7 @@
 part of 'update_token_cubit.dart';
 
 @freezed
-class UpdateTokenState with _$UpdateTokenState {
+abstract class UpdateTokenState with _$UpdateTokenState {
   const factory UpdateTokenState({
     required RequestState state,
     required String message,

@@ -1,6 +1,6 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: type=lint
+// coverage:ignore-file
+// ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'update_token_cubit.dart';
@@ -9,81 +9,64 @@ part of 'update_token_cubit.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$UpdateTokenState {
-  RequestState get state => throw _privateConstructorUsedError;
-  String get message => throw _privateConstructorUsedError;
+  RequestState get state;
+  String get message;
 
   /// Create a copy of UpdateTokenState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $UpdateTokenStateCopyWith<UpdateTokenState> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $UpdateTokenStateCopyWith<$Res> {
-  factory $UpdateTokenStateCopyWith(
-          UpdateTokenState value, $Res Function(UpdateTokenState) then) =
-      _$UpdateTokenStateCopyWithImpl<$Res, UpdateTokenState>;
-  @useResult
-  $Res call({RequestState state, String message});
-}
-
-/// @nodoc
-class _$UpdateTokenStateCopyWithImpl<$Res, $Val extends UpdateTokenState>
-    implements $UpdateTokenStateCopyWith<$Res> {
-  _$UpdateTokenStateCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of UpdateTokenState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  $UpdateTokenStateCopyWith<UpdateTokenState> get copyWith =>
+      _$UpdateTokenStateCopyWithImpl<UpdateTokenState>(
+          this as UpdateTokenState, _$identity);
+
   @override
-  $Res call({
-    Object? state = null,
-    Object? message = null,
-  }) {
-    return _then(_value.copyWith(
-      state: null == state
-          ? _value.state
-          : state // ignore: cast_nullable_to_non_nullable
-              as RequestState,
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+  bool operator ==(Object other) {
+    final _this = this as UpdateTokenState;
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is UpdateTokenState &&
+            (identical(other.state, _this.state) ||
+                other.state == _this.state) &&
+            (identical(other.message, _this.message) ||
+                other.message == _this.message));
+  }
+
+  @override
+  int get hashCode {
+    final _this = this as UpdateTokenState;
+    return Object.hash(runtimeType, _this.state, _this.message);
+  }
+
+  @override
+  String toString() {
+    final _this = this as UpdateTokenState;
+    return 'UpdateTokenState(state: ${_this.state}, message: ${_this.message})';
   }
 }
 
 /// @nodoc
-abstract class _$$UpdateTokenStateImplCopyWith<$Res>
-    implements $UpdateTokenStateCopyWith<$Res> {
-  factory _$$UpdateTokenStateImplCopyWith(_$UpdateTokenStateImpl value,
-          $Res Function(_$UpdateTokenStateImpl) then) =
-      __$$UpdateTokenStateImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $UpdateTokenStateCopyWith<$Res> {
+  factory $UpdateTokenStateCopyWith(
+          UpdateTokenState value, $Res Function(UpdateTokenState) _then) =
+      _$UpdateTokenStateCopyWithImpl;
   @useResult
   $Res call({RequestState state, String message});
 }
 
 /// @nodoc
-class __$$UpdateTokenStateImplCopyWithImpl<$Res>
-    extends _$UpdateTokenStateCopyWithImpl<$Res, _$UpdateTokenStateImpl>
-    implements _$$UpdateTokenStateImplCopyWith<$Res> {
-  __$$UpdateTokenStateImplCopyWithImpl(_$UpdateTokenStateImpl _value,
-      $Res Function(_$UpdateTokenStateImpl) _then)
-      : super(_value, _then);
+class _$UpdateTokenStateCopyWithImpl<$Res>
+    implements $UpdateTokenStateCopyWith<$Res> {
+  _$UpdateTokenStateCopyWithImpl(this._self, this._then);
+
+  final UpdateTokenState _self;
+  final $Res Function(UpdateTokenState) _then;
 
   /// Create a copy of UpdateTokenState
   /// with the given fields replaced by the non-null parameter values.
@@ -93,70 +76,252 @@ class __$$UpdateTokenStateImplCopyWithImpl<$Res>
     Object? state = null,
     Object? message = null,
   }) {
-    return _then(_$UpdateTokenStateImpl(
+    return _then(UpdateTokenState(
       state: null == state
-          ? _value.state
+          ? _self.state
           : state // ignore: cast_nullable_to_non_nullable
               as RequestState,
       message: null == message
-          ? _value.message
+          ? _self.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
 }
 
+/// Adds pattern-matching-related methods to [UpdateTokenState].
+extension UpdateTokenStatePatterns on UpdateTokenState {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_UpdateTokenState value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _UpdateTokenState() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_UpdateTokenState value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _UpdateTokenState():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_UpdateTokenState value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _UpdateTokenState() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(RequestState state, String message)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _UpdateTokenState() when $default != null:
+        return $default(_that.state, _that.message);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(RequestState state, String message) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _UpdateTokenState():
+        return $default(_that.state, _that.message);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(RequestState state, String message)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _UpdateTokenState() when $default != null:
+        return $default(_that.state, _that.message);
+      case _:
+        return null;
+    }
+  }
+}
+
 /// @nodoc
 
-class _$UpdateTokenStateImpl implements _UpdateTokenState {
-  const _$UpdateTokenStateImpl({required this.state, required this.message});
+class _UpdateTokenState implements UpdateTokenState {
+  const _UpdateTokenState({required this.state, required this.message});
 
   @override
   final RequestState state;
   @override
   final String message;
 
+  /// Create a copy of UpdateTokenState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'UpdateTokenState(state: $state, message: $message)';
-  }
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$UpdateTokenStateCopyWith<_UpdateTokenState> get copyWith =>
+      __$UpdateTokenStateCopyWithImpl<_UpdateTokenState>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$UpdateTokenStateImpl &&
+            other is _UpdateTokenState &&
             (identical(other.state, state) || other.state == state) &&
             (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, state, message);
+  int get hashCode {
+    return Object.hash(runtimeType, state, message);
+  }
+
+  @override
+  String toString() {
+    return 'UpdateTokenState(state: $state, message: $message)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$UpdateTokenStateCopyWith<$Res>
+    implements $UpdateTokenStateCopyWith<$Res> {
+  factory _$UpdateTokenStateCopyWith(
+          _UpdateTokenState value, $Res Function(_UpdateTokenState) _then) =
+      __$UpdateTokenStateCopyWithImpl;
+  @override
+  @useResult
+  $Res call({RequestState state, String message});
+}
+
+/// @nodoc
+class __$UpdateTokenStateCopyWithImpl<$Res>
+    implements _$UpdateTokenStateCopyWith<$Res> {
+  __$UpdateTokenStateCopyWithImpl(this._self, this._then);
+
+  final _UpdateTokenState _self;
+  final $Res Function(_UpdateTokenState) _then;
 
   /// Create a copy of UpdateTokenState
   /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$UpdateTokenStateImplCopyWith<_$UpdateTokenStateImpl> get copyWith =>
-      __$$UpdateTokenStateImplCopyWithImpl<_$UpdateTokenStateImpl>(
-          this, _$identity);
+  $Res call({
+    Object? state = null,
+    Object? message = null,
+  }) {
+    return _then(_UpdateTokenState(
+      state: null == state
+          ? _self.state
+          : state // ignore: cast_nullable_to_non_nullable
+              as RequestState,
+      message: null == message
+          ? _self.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
-abstract class _UpdateTokenState implements UpdateTokenState {
-  const factory _UpdateTokenState(
-      {required final RequestState state,
-      required final String message}) = _$UpdateTokenStateImpl;
-
-  @override
-  RequestState get state;
-  @override
-  String get message;
-
-  /// Create a copy of UpdateTokenState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$UpdateTokenStateImplCopyWith<_$UpdateTokenStateImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+// dart format on

@@ -5,9 +5,9 @@ import 'package:clean_architecture/src/exports/bloc_list.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
+import 'package:clean_architecture/injections/injection.dart';
 import 'package:clean_architecture/l10n/l10n.dart';
 import 'package:clean_architecture/src/Utilities/shared_pref_helper.dart';
 import 'package:clean_architecture/app/comman/themes.dart';
@@ -18,8 +18,13 @@ import 'package:clean_architecture/routes/go_routes.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SharedPrefHelper().init();
+  configureDependencies();
 
-  Firebase.initializeApp();
+  try {
+    await Firebase.initializeApp();
+  } catch (e) {
+    debugPrint('Firebase initialization error: $e');
+  }
 
   runApp(const MyApp());
 }
@@ -45,7 +50,6 @@ class MyApp extends StatelessWidget {
                     ? ThemeMode.light
                     : ThemeMode.dark,
                 localizationsDelegates: const [
-                  AppLocalizations.delegate,
                   GlobalMaterialLocalizations.delegate,
                   GlobalWidgetsLocalizations.delegate,
                   GlobalCupertinoLocalizations.delegate,

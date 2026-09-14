@@ -1,7 +1,7 @@
 part of 'language_form_bloc.dart';
 
 @freezed
-class LanguageFormState with _$LanguageFormState {
+abstract class LanguageFormState with _$LanguageFormState {
   const factory LanguageFormState({
     required RequestState state,
     required Locale selectedLocale,
