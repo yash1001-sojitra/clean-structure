@@ -1,8 +1,6 @@
 // ignore_for_file: depend_on_referenced_packages
 
 import 'package:clean_architecture/injections/injection.dart';
-import 'package:clean_architecture/src/presentation/bloc/network/network_bloc.dart';
-import 'package:clean_architecture/src/presentation/cubit/upate_fcm_token/update_token_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/single_child_widget.dart';
 

@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
-import 'package:clean_architecture/app/comman/enum.dart';
+import 'package:clean_architecture/app/common/enum.dart';
 
 part 'update_token_cubit.freezed.dart';
 part 'update_token_state.dart';

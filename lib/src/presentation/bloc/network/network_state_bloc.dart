@@ -1,4 +1,3 @@
-
 abstract class NetworkState {}
 
 class NetworkInitial extends NetworkState {}

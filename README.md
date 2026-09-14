@@ -1,8 +1,8 @@
 # Flutter Bloc Clean Architecture Boilerplate
 
-A production-ready Flutter project boilerplate adhering to the principles of **Clean Architecture**. It is designed to help you jumpstart your Flutter projects by providing a structured, scalable, and highly maintainable architecture.
+A production-ready Flutter project boilerplate adhering to the principles of **Clean Architecture**. It is designed to help you jumpstart enterprise-grade Flutter projects by providing a structured, scalable, testable, and maintainable architecture.
 
-This boilerplate utilizes the **BLoC** state management pattern, **GetIt** & **Injectable** for dependency injection, **Freezed** for immutable state and code generation, and **GoRouter** for declarative routing.
+This boilerplate utilizes the **BLoC & Cubit** state management patterns, **GetIt** & **Injectable** for automated dependency injection, **Freezed** for immutable state and code generation, **Dio** with logging interceptors for networking, and **GoRouter** for declarative routing.
 
 ---
 
@@ -37,20 +37,23 @@ flutter run
 
 ## Features
 
-- 🏗️ **Clean Architecture Pattern**: Strict separation of concerns (Presentation, Domain, Data).
+- 🏗️ **Clean Architecture Pattern**: Strict separation of concerns across Presentation, Domain, and Data layers.
 - ⚡ **BLoC & Cubit State Management**: Predictable, testable, and reactive state management using `flutter_bloc`.
-- 💉 **Dependency Injection**: Automated compile-time DI with `get_it` and `injectable`.
+- 💉 **Automated Dependency Injection**: Compile-time DI with `get_it` and `injectable`.
+- 🌐 **Centralized Network Client**: Configured `Dio` client with custom timeouts, standard headers, and `LogInterceptor`.
+- 💾 **Separated Data Sources**: Distinct Remote (API) and Local (`SharedPrefHelper` / Cache) data sources.
+- 🎯 **Generic Base UseCase Abstraction**: Standardized `UseCase<Type, Params>` and `NoParams` contracts.
 - 🧊 **Immutable Models & States**: Union types, pattern matching, and copy methods generated with `freezed`.
-- 🗺️ **Declarative Routing**: Dynamic deep-linkable routing with `go_router`.
-- 🌐 **Localization & Internationalization (i18n / l10n)**: Multi-language support (English, Hindi, etc.) out-of-the-box.
-- 🎨 **Dynamic Theming**: Light and dark mode support with instant switching.
-- 📡 **Network Connectivity Tracking**: Live internet connection monitoring bloc.
+- 🗺️ **Declarative Routing**: Dynamic deep-linkable navigation with `go_router`.
+- 🌍 **Localization & Internationalization (i18n / l10n)**: Multi-language support (English, Hindi, etc.) out-of-the-box.
+- 🎨 **Dynamic Theming**: Instant light and dark mode switching.
+- 📡 **Live Connectivity Monitoring**: Real-time network connection monitoring BLoC.
 - 🔔 **Push Notifications Ready**: Integrated Firebase Messaging & FCM token update cubit.
-- 🧩 **Reusable UI Components**: Standardized buttons, text fields, and dialogs.
+- 🧩 **Reusable UI Components**: Standardized buttons, form fields, and dialogs.
 
 ---
 
-## Clean Architecture Overview
+## Clean Architecture Layers
 
 Clean Architecture separates software into concentric layers with a strict dependency rule: **inner layers have no knowledge of outer layers**.
 
@@ -68,7 +71,7 @@ Clean Architecture separates software into concentric layers with a strict depen
                             │ implements
 ┌───────────────────────────┴─────────────────────────────┐
 │                       Data Layer                        │
-│   (Data Sources, Models / DTOs, Repository Impls)       │
+│   (Remote/Local Data Sources, Models/DTOs, Repos Impls) │
 └─────────────────────────────────────────────────────────┘
 ```
 
@@ -76,25 +79,25 @@ Clean Architecture separates software into concentric layers with a strict depen
 
 ## Step-by-Step Deep Directory Breakdown
 
-Here is a comprehensive breakdown of the project layout and what each folder and file is responsible for:
-
 ```
 lib/
-├── app/                        # App-level configurations and shared resources
-│   └── comman/                 # Common utilities (colors, themes, constants, endpoints)
+├── app/                        # Cross-cutting concerns and shared configurations
+│   └── common/                 # Common utilities (colors, themes, constants, endpoints)
 │       ├── api.dart            # API base URLs and endpoint paths
 │       ├── colors.dart         # Global color palette and styling constants
-│       ├── constant.dart       # App constants (App Name, storage keys, timeouts)
-│       ├── enum.dart           # Common enums (e.g. RequestState: initial, loading, loaded, error)
-│       ├── exception.dart      # Custom exception classes for data failures
-│       ├── failure.dart        # Failure abstractions mapped to UI-friendly messages
+│       ├── constant.dart       # App constants (App Name, storage keys, spacing)
+│       ├── enum.dart           # Common enums (e.g. RequestState: empty, loading, loaded, error)
+│       ├── exception.dart      # Custom exception classes for data failures (ServerException, etc.)
+│       ├── failure.dart        # Failure abstractions mapped to UI-friendly messages (ServerFailure, etc.)
 │       ├── screens.dart        # Screen size and responsive layout helper utilities
 │       ├── themes.dart         # Light and Dark ThemeData definitions
-│       └── toast.dart          # Helper methods for showing toast alerts / snackbars
+│       ├── toast.dart          # Helper methods for showing toast alerts / snackbars
+│       └── usecase.dart        # Generic UseCase<Type, Params> and NoParams contracts
 │
 ├── injections/                 # Dependency injection setup
 │   ├── injection.dart          # GetIt locator declaration and configureDependencies() trigger
-│   └── injection.config.dart   # Auto-generated dependency registrations (via injectable)
+│   ├── injection.config.dart   # Auto-generated dependency registrations (via injectable)
+│   └── network_module.dart     # Injectable module providing configured Dio client with interceptors
 │
 ├── l10n/                       # Localization & Internationalization
 │   ├── app_en.arb              # English translation key-values
@@ -113,32 +116,38 @@ lib/
 │   ├── Utilities/              # Utility helpers
 │   │   └── shared_pref_helper.dart # SharedPreferences wrapper for persistent key-value storage
 │   │
-│   ├── data/                   # DATA LAYER (Data retrieval & storage)
-│   │   ├── datasource/         # Connects to remote servers (APIs) or local storage (DB/Cache)
-│   │   │   └── authentication_remote_data_source.dart # Direct network calls (HTTP/Dio)
-│   │   ├── model/              # Data models / DTOs with JSON serialization (fromJson/toJson)
-│   │   └── repository/         # Implements the domain repository interfaces
-│   │       └── authentication_repository_impl.dart # Translates data sources into domain results
-│   │
-│   ├── domain/                 # DOMAIN LAYER (Core Business Logic - Pure Dart)
-│   │   ├── entities/           # Business entities representing the domain model
+│   ├── domain/                 # DOMAIN LAYER (Pure Business Logic - Zero Framework)
+│   │   ├── entities/           # Business entities representing the core domain models
+│   │   │   ├── user.dart       # User entity
+│   │   │   └── auth_token.dart # AuthToken entity
 │   │   ├── repositories/       # Abstract repository interfaces (contracts)
-│   │   │   └── autentication_repository.dart # Interface defining methods required by business logic
+│   │   │   └── authentication_repository.dart # Interface defining auth operations
 │   │   └── usecase/            # Granular, single-responsibility use cases
-│   │       └── login.dart      # Encapsulates the specific SignIn business action
+│   │       ├── login.dart            # SignIn use case (implements UseCase<User, LoginParams>)
+│   │       ├── check_auth_status.dart# CheckAuthStatus use case
+│   │       └── logout.dart           # Logout use case
+│   │
+│   ├── data/                   # DATA LAYER (Data retrieval, transformation & persistence)
+│   │   ├── model/              # Data models / DTOs with JSON serialization (fromJson/toJson)
+│   │   │   └── user_model.dart # UserModel extending User entity
+│   │   ├── datasource/         # Separated remote and local data access
+│   │   │   ├── authentication_remote_data_source.dart # Direct API calls via injected Dio
+│   │   │   └── authentication_local_data_source.dart  # Token & local preference persistence
+│   │   └── repository/         # Implements domain repository interfaces
+│   │       └── authentication_repository_impl.dart    # Coordinates remote and local data sources
 │   │
 │   └── presentation/           # PRESENTATION LAYER (UI & State)
-│       ├── bloc/               # Complex state management using BLoC pattern (Event -> State)
-│       │   ├── authenticator_watcher/ # Watches user authentication lifecycle
+│       ├── bloc/               # State management using BLoC pattern (Event -> State)
+│       │   ├── authenticator_watcher/ # Watches user authentication lifecycle via UseCases
 │       │   ├── language/       # Handles app language selection & locale state
 │       │   ├── network/        # Tracks device network/internet connectivity
 │       │   └── sign_in_form/   # Manages sign-in form inputs, validation, and submission
 │       ├── cubit/              # Lightweight state management using Cubit pattern
 │       │   ├── theme/          # Toggles between Light and Dark themes
-│       │   └── upate_fcm_token/# Updates and synchronizes Firebase push notification tokens
+│       │   └── update_fcm_token/# Updates and synchronizes Firebase push notification tokens
 │       ├── page/               # App screens / views
 │       │   ├── Error/          # Route error / 404 fallback page
-│       │   ├── auth/           # Authentication screens (SignInScreen, SignUpScreen)
+│       │   ├── auth/           # Fully implemented authentication screens (SignInScreen, SignUpScreen)
 │       │   └── splash/         # SplashScreen with initialization and authentication check
 │       └── widget/             # Reusable UI widgets
 │           ├── custom_dialog.dart
@@ -155,58 +164,63 @@ lib/
 
 ## Architectural Data Flow: Step-by-Step
 
-To see how everything works together, follow the complete lifecycle of a user action (e.g., signing in):
+Follow the complete lifecycle of a user action (e.g. signing in):
 
 ```
-┌──────────────┐     1. Dispatches Event     ┌────────────────┐
-│  UI (Screen) │ ──────────────────────────> │ SignInFormBloc │
-└──────────────┘                             └───────┬────────┘
-       ▲                                             │
-       │ 6. Rebuilds with new state                  │ 2. Calls UseCase
-       │                                             ▼
-┌──────────────┐                             ┌────────────────┐
-│ BlocBuilder  │ <────────────────────────── │  SignIn (UC)   │
-└──────────────┘     5. Emits State          └───────┬────────┘
-                                                     │
-                                                     │ 3. Executes contract
-                                                     ▼
-                                             ┌───────────────────────────┐
-                                             │ AuthenticationRepository  │
-                                             └──────────────┬────────────┘
-                                                            │
-                                                            │ 4. Fetches remote data
-                                                            ▼
-                                             ┌───────────────────────────┐
-                                             │ RemoteDataSource (API)    │
-                                             └───────────────────────────┘
+┌──────────────┐     1. Dispatches Event      ┌────────────────┐
+│  UI (Screen) │ ───────────────────────────> │ SignInFormBloc │
+└──────────────┘                              └───────┬────────┘
+       ▲                                              │
+       │ 6. Rebuilds with new state                   │ 2. Invokes UseCase
+       │                                              ▼
+┌──────────────┐                              ┌────────────────┐
+│ BlocBuilder  │ <─────────────────────────── │  SignIn (UC)   │
+└──────────────┘     5. Emits State           └───────┬────────┘
+                                                      │
+                                                      │ 3. Executes contract
+                                                      ▼
+                                              ┌───────────────────────────┐
+                                              │ AuthenticationRepository  │
+                                              └──────┬─────────────┬──────┘
+                                                     │             │
+                                    4a. Fetches API  │             │ 4b. Caches Token
+                                                     ▼             ▼
+                                              ┌─────────────┐ ┌─────────────┐
+                                              │ Remote DS   │ │ Local DS    │
+                                              │ (Dio API)   │ │ (SharedPref)│
+                                              └─────────────┘ └─────────────┘
 ```
 
 1. **User Interaction**: The user enters their email and password on [`SignInScreen`](file:///Users/yash/our/clean-structure/clean-structure/lib/src/presentation/page/auth/sign_in_screen.dart) and taps "Sign In".
 2. **Dispatch Event**: The UI fires an event to the BLoC:
    ```dart
-   context.read<SignInFormBloc>().add(const SignInFormEvent.signInWithEmailAndPasswordPressed());
+   context.read<SignInFormBloc>().add(const SignInFormEvent.signInWithEmail());
    ```
 3. **Execute Use Case**: [`SignInFormBloc`](file:///Users/yash/our/clean-structure/clean-structure/lib/src/presentation/bloc/sign_in_form/sign_in_form_bloc.dart) emits a loading state and calls the domain usecase [`SignIn`](file:///Users/yash/our/clean-structure/clean-structure/lib/src/domain/usecase/login.dart).
-4. **Repository & Data Source**:
-   - The usecase invokes [`AuthenticationRepository`](file:///Users/yash/our/clean-structure/clean-structure/lib/src/domain/repositories/autentication_repository.dart).
-   - Its implementation, [`AuthenticationRepositoryImpl`](file:///Users/yash/our/clean-structure/clean-structure/lib/src/data/repository/authentication_repository_impl.dart), calls [`AuthenticationRemoteDataSource`](file:///Users/yash/our/clean-structure/clean-structure/lib/src/data/datasource/authentication_remote_data_source.dart) to perform the HTTP request.
-5. **Handling Results**: The data source returns either raw data or throws an exception. The repository maps this into an `Either<Failure, Success>` and passes it back to the usecase.
-6. **State Emission & UI Reaction**: The BLoC emits either a success state or an error state. The UI updates automatically via `BlocConsumer` or `BlocListener`.
+4. **Repository Orchestration**:
+   - The use case invokes [`AuthenticationRepository`](file:///Users/yash/our/clean-structure/clean-structure/lib/src/domain/repositories/authentication_repository.dart).
+   - Its implementation, [`AuthenticationRepositoryImpl`](file:///Users/yash/our/clean-structure/clean-structure/lib/src/data/repository/authentication_repository_impl.dart):
+     - Calls [`AuthenticationRemoteDataSource`](file:///Users/yash/our/clean-structure/clean-structure/lib/src/data/datasource/authentication_remote_data_source.dart) via the configured `Dio` client to execute the HTTP call.
+     - On success, persists the access token using [`AuthenticationLocalDataSource`](file:///Users/yash/our/clean-structure/clean-structure/lib/src/data/datasource/authentication_local_data_source.dart).
+     - Converts `UserModel` to domain `User` entity.
+5. **Handling Results**: The repository returns `Either<Failure, User>` back up to the use case and BLoC.
+6. **State Emission & UI Reaction**: The BLoC emits either a success (`loaded`) or error state. The UI updates automatically via `BlocConsumer` or `BlocListener`.
 
 ---
 
 ## Dependency Injection & Initialization
 
-Dependencies are managed using **GetIt** and **Injectable**. 
+Dependencies are managed using **GetIt** and **Injectable**:
 
-1. Classes are annotated with `@singleton`, `@lazySingleton`, or `@injectable`:
-   ```dart
-   @singleton
-   class AuthenticatorWatcherBloc extends Bloc<...> { ... }
-   ```
-2. When you run `dart run build_runner build`, Injectable generates [`lib/injections/injection.config.dart`](file:///Users/yash/our/clean-structure/clean-structure/lib/injections/injection.config.dart).
-3. In [`lib/main.dart`](file:///Users/yash/our/clean-structure/clean-structure/lib/main.dart), `configureDependencies()` registers all classes into `locator` before the widget tree mounts.
-4. Global BLoCs and Cubits are provided to the entire app in [`lib/src/Exports/bloc_list.dart`](file:///Users/yash/our/clean-structure/clean-structure/lib/src/Exports/bloc_list.dart) via `MultiBlocProvider`.
+1. **Modules & Services**: 
+   - `NetworkModule` provides a singleton `Dio` instance.
+   - Data sources are annotated with `@LazySingleton(as: Interface)`.
+   - Repositories are annotated with `@LazySingleton(as: Interface)`.
+   - Use cases are annotated with `@injectable`.
+   - BLoCs & Cubits are annotated with `@singleton`.
+2. **Initialization**:
+   - In [`lib/main.dart`](file:///Users/yash/our/clean-structure/clean-structure/lib/main.dart), `configureDependencies()` registers all classes into `locator` before the widget tree mounts.
+   - Root BLoCs and Cubits are provided to the entire application in [`lib/src/Exports/bloc_list.dart`](file:///Users/yash/our/clean-structure/clean-structure/lib/src/Exports/bloc_list.dart) via `MultiBlocProvider`.
 
 ---
 

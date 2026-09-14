@@ -4,9 +4,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:clean_architecture/app/comman/colors.dart';
-import 'package:clean_architecture/app/comman/constant.dart';
-import 'package:clean_architecture/app/comman/screens.dart';
+import 'package:clean_architecture/app/common/colors.dart';
+import 'package:clean_architecture/app/common/constant.dart';
+import 'package:clean_architecture/app/common/screens.dart';
 import 'package:clean_architecture/src/presentation/cubit/theme/theme_cubit.dart';
 import 'package:clean_architecture/src/presentation/widget/custom_elevated_button.dart';
 import 'package:clean_architecture/src/presentation/widget/custom_outlined_button.dart';

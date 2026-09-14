@@ -1,6 +1,6 @@
 // ignore_for_file: deprecated_member_use
 
-import 'package:clean_architecture/app/comman/colors.dart';
+import 'package:clean_architecture/app/common/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 

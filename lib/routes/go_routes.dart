@@ -1,5 +1,5 @@
 import 'dart:developer';
-import 'package:clean_architecture/src/presentation/page/Error/error_screen.dart';
+import 'package:clean_architecture/src/presentation/page/error/error_screen.dart';
 import 'package:clean_architecture/src/presentation/page/auth/sign_in_screen.dart';
 import 'package:clean_architecture/src/presentation/page/auth/sign_up_screen.dart';
 import 'package:clean_architecture/src/presentation/page/splash/splash_screen.dart';
@@ -26,7 +26,7 @@ GoRouter routerinit = GoRouter(
 
     GoRoute(
       name: AppRoutes.SIGNIN_ROUTE_NAME,
-      path: AppRoutes.SINGIN_ROUTE_PATH,
+      path: AppRoutes.SIGNIN_ROUTE_PATH,
       builder: (BuildContext context, GoRouterState state) {
         return const SignInScreen();
       },
@@ -35,7 +35,7 @@ GoRouter routerinit = GoRouter(
       name: AppRoutes.SIGNUP_ROUTE_NAME,
       path: AppRoutes.SIGNUP_ROUTE_PATH,
       builder: (BuildContext context, GoRouterState state) {
-        return const SingUpScreen();
+        return const SignUpScreen();
       },
     ),
   ],

@@ -1,6 +1,6 @@
 // ignore_for_file: deprecated_member_use
 
-import 'package:clean_architecture/app/comman/constant.dart';
+import 'package:clean_architecture/app/common/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:form_field_validator/form_field_validator.dart';

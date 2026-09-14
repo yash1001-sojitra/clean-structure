@@ -1,8 +1,9 @@
-import 'package:clean_architecture/app/comman/constant.dart';
+import 'package:clean_architecture/src/domain/usecase/check_auth_status.dart';
+import 'package:clean_architecture/src/domain/usecase/logout.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+
 part 'authenticator_watcher_event.dart';
 part 'authenticator_watcher_state.dart';
 part 'authenticator_watcher_bloc.freezed.dart';
@@ -10,32 +11,35 @@ part 'authenticator_watcher_bloc.freezed.dart';
 @singleton
 class AuthenticatorWatcherBloc
     extends Bloc<AuthenticatorWatcherEvent, AuthenticatorWatcherState> {
-  AuthenticatorWatcherBloc()
-      : super(const AuthenticatorWatcherState.initial()) {
+  AuthenticatorWatcherBloc(
+    this._checkAuthStatus,
+    this._logout,
+  ) : super(const AuthenticatorWatcherState.initial()) {
     on<AuthenticatorWatcherEvent>((event, emit) async {
       await event.map(
         authCheckRequest: (_) async {
           emit(const AuthenticatorWatcherState.authenticating());
-          final prefs = await SharedPreferences.getInstance();
-          final token = prefs.getString(ACCESS_TOKEN);
-          final showOnbording = prefs.getString(ONBOARDING);
-          if (showOnbording == null) {
-            prefs.setString(ONBOARDING, ONBOARDING);
-            emit(const AuthenticatorWatcherState.isFirstTime());
-          } else if (token != null) {
-            emit(const AuthenticatorWatcherState.authenticated());
-          } else {
-            emit(const AuthenticatorWatcherState.isFirstTime());
-            // emit(const AuthenticatorWatcherState.unauthenticated());
-          }
+          final result = await _checkAuthStatus.execute();
+          result.fold(
+            (failure) => emit(const AuthenticatorWatcherState.unauthenticated()),
+            (isAuthenticated) {
+              if (isAuthenticated) {
+                emit(const AuthenticatorWatcherState.authenticated());
+              } else {
+                emit(const AuthenticatorWatcherState.unauthenticated());
+              }
+            },
+          );
         },
         signOut: (_) async {
           emit(const AuthenticatorWatcherState.authenticating());
-          final prefs = await SharedPreferences.getInstance();
-          prefs.remove(ACCESS_TOKEN);
+          await _logout.execute();
           emit(const AuthenticatorWatcherState.unauthenticated());
         },
       );
     });
   }
+
+  final CheckAuthStatus _checkAuthStatus;
+  final Logout _logout;
 }
