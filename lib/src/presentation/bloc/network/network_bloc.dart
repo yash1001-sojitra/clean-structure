@@ -1,6 +1,6 @@
-import 'package:clean_architecture/src/presentation/bloc/network/network_event_bloc.dart';
+import 'package:clean_architecture/src/presentation/bloc/network/network_event.dart';
 import 'package:clean_architecture/src/presentation/bloc/network/network_helper.dart';
-import 'package:clean_architecture/src/presentation/bloc/network/network_state_bloc.dart';
+import 'package:clean_architecture/src/presentation/bloc/network/network_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
